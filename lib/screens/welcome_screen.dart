@@ -1,17 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'dart:math';
-import 'package:flare_dart/math/mat2d.dart';
-import 'package:flare_flutter/flare.dart';
 import 'package:flare_flutter/flare_actor.dart';
-import 'package:flare_flutter/flare_controller.dart';
-import 'package:flare_flutter/flare_controls.dart';
 import 'package:flutter/rendering.dart';
 import 'package:testapp/screens/login_screen.dart';
 import 'package:testapp/screens/registration_screen.dart';
-import 'custom_widgets.dart';
+import 'package:testapp/custom_widgets.dart';
 import 'package:testapp/constants.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class WelcomeScreen extends StatefulWidget {
   static const String id = 'welcome_screen';
@@ -21,13 +17,6 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
-  String _animationName = 'Untitled';
-
-  void dispose() {
-    //controller.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,11 +32,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Expanded(
-              child: Center(
-                child: FlareActor(
-                  'assets/water_loading.flr',
-                  //animation: _animationName,
-                ),
+              child: Icon(
+                FontAwesomeIcons.handHoldingWater,
+                color: Colors.blueAccent,
+                size: 150,
               ),
             ),
             Padding(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gradient_app_bar/gradient_app_bar.dart';
+import 'custom_charts.dart';
 
 const k_credentials = r'''
 {
@@ -16,6 +16,8 @@ const k_credentials = r'''
 }
 ''';
 
+const k_color_water = Color(0xFF254F68);
+
 const k_spreadsheetId = '1ez2TO6jUCC9175HUBUZfDBbY3iO9IRUqhvjmPtmPgAk';
 
 const List<Color> k_colorList = [
@@ -29,10 +31,7 @@ const List<Color> k_colorList = [
 ];
 
 const kInputDecoration = InputDecoration(
-  hintStyle: TextStyle(
-    fontSize: 20,
-    //fontWeight: FontWeight.bold,
-  ),
+  hintStyle: k_textFieldsStyle,
   hintText: 'Enter value',
   fillColor: Colors.white,
   contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
@@ -72,3 +71,22 @@ const k_gradientAppBar = LinearGradient(
       Colors.lightBlue,
       Colors.blue,
     ]);
+
+const k_textFieldsStyle = TextStyle(
+  fontSize: 20,
+  color: Colors.white,
+);
+
+const k_notData = SizedBox(
+  height: 50,
+  child: Center(
+    child: Text(
+      'No data',
+      style: TextStyle(
+        color: Colors.white,
+        fontSize: 40,
+        fontWeight: FontWeight.bold,
+      ),
+    ),
+  ),
+);

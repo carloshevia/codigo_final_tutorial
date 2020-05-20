@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:testapp/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'custom_widgets.dart';
+import '../custom_widgets.dart';
 import 'stats_screen.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
@@ -34,7 +34,6 @@ class _LoginScreenState extends State<LoginScreen> {
               gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            //stops: [0.1, 0.3, 0.4, 0.9, 1],
             colors: [
               Colors.blue,
               Colors.lightBlue,
@@ -75,21 +74,21 @@ class _LoginScreenState extends State<LoginScreen> {
               CustomBotton(
                 bottonText: 'Log In',
                 onPress: () async {
-                  setState(() {
-                    showSpinner = true;
-                  });
-                  try {
-                    final user = await _auth.signInWithEmailAndPassword(
-                        email: email.trim(), password: password.trim());
-                    if (user != null) {
-                      Navigator.pushNamed(context, StatsScreen.id);
-                    }
-                  } catch (e) {
-                    print(e);
-                  }
-                  setState(() {
-                    showSpinner = false;
-                  });
+//                  setState(() {
+//                    showSpinner = true;
+//                  });
+//                  try {
+//                    final user = await _auth.signInWithEmailAndPassword(
+//                        email: email.trim(), password: password.trim());
+//                    if (user != null) {
+                  Navigator.pushNamed(context, StatsScreen.id);
+//                    }
+//                  } catch (e) {
+//                    print(e);
+//                  }
+//                  setState(() {
+//                    showSpinner = false;
+//                  });
                 },
                 colour: Colors.lightBlueAccent,
               ),
