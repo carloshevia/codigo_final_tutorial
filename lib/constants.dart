@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'custom_charts.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 const k_credentials = r'''
 {
@@ -88,5 +89,13 @@ const k_notData = SizedBox(
         fontWeight: FontWeight.bold,
       ),
     ),
+  ),
+);
+
+const k_icon = Expanded(
+  child: Icon(
+    FontAwesomeIcons.handHoldingWater,
+    color: Colors.blueAccent,
+    size: 150,
   ),
 );

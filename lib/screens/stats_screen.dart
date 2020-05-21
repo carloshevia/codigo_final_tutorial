@@ -24,16 +24,21 @@ class _StatsScreenState extends State<StatsScreen> {
 
   @override
   void initState() {
-    networking = Networking();
+    //TODO crear un objecto networking  para extraer data
+//    networking = Networking();
     super.initState();
   }
 
-  List<UserConsume> getDataByName() {
-    return networking.getData()[client];
-  }
+  //TODO obtener map con datos
+//  List<UserConsume> getDataByName() {
+//    return networking.getData()[client];
+//  }
 
   @override
   Widget build(BuildContext context) {
+    // DefaultTabController widget para olvidarnos
+    // de implementar
+    //
     return DefaultTabController(
       length: 3,
       child: Scaffold(
@@ -44,10 +49,11 @@ class _StatsScreenState extends State<StatsScreen> {
           actions: <Widget>[
             IconButton(
               icon: Icon(Icons.close),
-              onPressed: () async {
-                await _auth.signOut();
-                Navigator.pop(context);
-              },
+//TODO sign out
+//              onPressed: () async {
+//                await _auth.signOut();
+//                Navigator.pop(context);
+//              },
             )
           ],
           gradient: k_gradientAppBar,
@@ -59,64 +65,73 @@ class _StatsScreenState extends State<StatsScreen> {
             ],
           ),
         ),
-        body: TabBarView(children: [
-          Tab(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                showGraph
-                    ? Padding(
-                        padding: EdgeInsets.all(30),
-                        child: Text(
-                          data.last.consume >= 0
-                              ? 'Consumió +${data.last.consume.abs()} litros que el mes pasado'
-                              : 'Consumió -${data.last.consume.abs()} litros que el mes pasado',
-                          style: k_textFieldsStyle,
-                        ),
-                      )
-                    : k_notData,
-                Padding(
-                  padding: EdgeInsets.all(5),
-                  child: TextField(
-                    style: k_textFieldsStyle,
-                    keyboardType: TextInputType.emailAddress,
-                    textAlign: TextAlign.center,
-                    onChanged: (value) {
-                      client = value;
-                    },
-                    decoration: kInputDecoration.copyWith(hintText: 'Enter id'),
+        body: TabBarView(
+          children: [
+            Tab(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  // TODO query data y mostrar diferencia entre meses
+//                showGraph
+//                    ? Padding(
+//                        padding: EdgeInsets.all(30),
+//                        child: Text(
+//                          data.last.consume >= 0
+//                              ? 'Consumió +${data.last.consume.abs()} litros que el mes pasado'
+//                              : 'Consumió -${data.last.consume.abs()} litros que el mes pasado',
+//                          style: k_textFieldsStyle,
+//                        ),
+//                      )
+//                    : k_notData,
+                  Padding(
+                    padding: EdgeInsets.all(5),
+                    child: TextField(
+                      style: k_textFieldsStyle,
+                      textAlign: TextAlign.center,
+                      onChanged: (value) {
+                        client = value;
+                      },
+                      decoration:
+                          kInputDecoration.copyWith(hintText: 'Enter id'),
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(5),
-                  child: CustomBotton(
-                    bottonText: 'Get Data',
-                    colour: Colors.lightBlueAccent,
-                    onPress: () async {
-                      print('Go Pressed');
-                      setState(() {
-                        data = getDataByName();
-                        if (data != null) {
-                          showGraph = true;
-                        } else {
-                          showGraph = false;
-                        }
-                      });
-                    },
+                  Padding(
+                    padding: EdgeInsets.all(5),
+                    child: CustomBotton(
+                      bottonText: 'Get Data',
+                      colour: Colors.lightBlueAccent,
+                      onPress: () async {
+                        print('Go Pressed');
+//                      setState(() {
+//                        data = getDataByName();
+//                        if (data != null) {
+//                          showGraph = true;
+//                        } else {
+//                          showGraph = false;
+//                        }
+//                      });
+                      },
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          Tab(
-              child: showGraph
-                  ? CustomTabs(data: data, chartType: false)
-                  : k_notData),
-          Tab(
-              child: showGraph
-                  ? CustomTabs(data: data, chartType: true)
-                  : k_notData),
-        ]),
+            Tab(
+              child: Text('Hello World'),
+// TODO mostrear graficos si la informacion esta disponible
+//              child: showGraph
+//                  ? CustomTabs(data: data, chartType: false)
+//                  : k_notData
+            ),
+            Tab(
+              child: Text('Hello World'),
+// TODO mostrear graficos si la informacion esta disponible
+//              child: showGraph
+//                  ? CustomTabs(data: data, chartType: true)
+//                  : k_notData
+            ),
+          ],
+        ),
       ),
     );
   }

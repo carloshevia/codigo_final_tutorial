@@ -1,16 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flare_flutter/flare_actor.dart';
-import 'package:flutter/rendering.dart';
-import 'package:testapp/screens/login_screen.dart';
 import 'package:testapp/screens/registration_screen.dart';
-import 'package:testapp/custom_widgets.dart';
-import 'package:testapp/constants.dart';
-import 'package:gradient_app_bar/gradient_app_bar.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:testapp/screens/login_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
-  static const String id = 'welcome_screen';
+  //TODO static string id
+//  static const String id = 'welcome_screen';
 
   @override
   _WelcomeScreenState createState() => _WelcomeScreenState();
@@ -20,48 +14,40 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: GradientAppBar(
+      backgroundColor: Colors.green, // to analyze the layout
+      appBar: AppBar(
+        //TODO GradientAppBar, same with gradiente: k_gradientAppBar
         title: Text('Welcome Screen'),
-        centerTitle: true,
-        gradient: k_gradientAppBar,
+        backgroundColor: Colors.blue,
       ),
       body: Container(
-        decoration: k_boxDecorationGradient,
+        color: Colors.lightBlueAccent,
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.center,
+          //TODO crossAlignment-stretch and mainAlignment-center
+          // container takes same space as its child
           children: <Widget>[
-            Expanded(
-              child: Icon(
-                FontAwesomeIcons.handHoldingWater,
-                color: Colors.blueAccent,
-                size: 150,
-              ),
+            // TODO k_icon,
+            // TODO boton personalizado
+            MaterialButton(
+              child: Text('Log In'),
+              minWidth: 200.0,
+              height: 40.0,
+              onPressed: () {
+                //TODO cambiar hardcoded string
+                Navigator.pushNamed(context, 'login_screen');
+              },
+              color: Colors.red,
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.0),
-              child: Column(
-                children: <Widget>[
-                  CustomBotton(
-                    bottonText: 'Log In',
-                    onPress: () {
-                      Navigator.pushNamed(context, LoginScreen.id);
-                    },
-                    colour: Colors.lightBlueAccent,
-                  ),
-                  CustomBotton(
-                    bottonText: 'Register',
-                    onPress: () {
-                      Navigator.pushNamed(context, RegistrationScreen.id);
-                    },
-                    colour: Colors.blueAccent,
-                  ),
-                  SizedBox(
-                    height: 100,
-                  ),
-                ],
-              ),
+            MaterialButton(
+              child: Text('Register'),
+              minWidth: 200.0,
+              height: 40.0,
+              onPressed: () {
+                Navigator.pushNamed(context, 'registration_screen');
+              },
+              color: Colors.yellow,
             ),
+            //TODO sized box - height 10
           ],
         ),
       ),

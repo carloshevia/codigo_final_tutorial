@@ -13,17 +13,14 @@ class Tutorial extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      //TODO remplazar hardcoded routes strings con static variables
       //the initial screen of the app
-      initialRoute: WelcomeScreen.id,
-      //first we define the screens of our app in a map
-      // with the form { String: ScreenInstance()}
-      //Then change hardcoded strings for static variables
-      //for each of the screen classes
+      initialRoute: 'welcome_screen',
       routes: {
-        WelcomeScreen.id: (context) => WelcomeScreen(),
-        RegistrationScreen.id: (context) => RegistrationScreen(),
-        LoginScreen.id: (context) => LoginScreen(),
-        StatsScreen.id: (context) => StatsScreen(),
+        'welcome_screen': (context) => WelcomeScreen(),
+        'registration_screen': (context) => RegistrationScreen(),
+        'login_screen': (context) => LoginScreen(),
+        'stats_screen': (context) => StatsScreen(),
       },
     );
   }
