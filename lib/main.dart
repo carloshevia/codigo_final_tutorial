@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:testapp/screens/registration_screen.dart';
-import 'package:testapp/screens/stats_screen.dart';
-import 'package:testapp/screens/welcome_screen.dart';
-import 'package:testapp/screens/login_screen.dart';
+import 'screens/registration_screen.dart';
+import 'screens/stats_screen.dart';
+import 'screens/welcome_screen.dart';
+import 'screens/login_screen.dart';
 
 void main() {
   runApp(Tutorial());

@@ -1,12 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:testapp/networking.dart';
-import 'package:testapp/constants.dart';
+import '../networking.dart';
+import '../constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
-import 'package:testapp/user_consume.dart';
-import 'package:testapp/custom_tabs.dart';
-import 'package:testapp/custom_widgets.dart';
+import '../user_consume.dart';
+import '../widgets/custom_button.dart';
 
 class StatsScreen extends StatefulWidget {
   static const String id = 'stats_screen';
@@ -102,6 +100,7 @@ class _StatsScreenState extends State<StatsScreen> {
                       colour: Colors.lightBlueAccent,
                       onPress: () async {
                         print('Go Pressed');
+//TODO Obterner data de networking usando la funcion getDataByName()
 //                      setState(() {
 //                        data = getDataByName();
 //                        if (data != null) {
@@ -118,14 +117,14 @@ class _StatsScreenState extends State<StatsScreen> {
             ),
             Tab(
               child: Text('Hello World'),
-// TODO mostrear graficos si la informacion esta disponible
+// TODO mostrar graficos si la informacion esta disponible
 //              child: showGraph
 //                  ? CustomTabs(data: data, chartType: false)
 //                  : k_notData
             ),
             Tab(
               child: Text('Hello World'),
-// TODO mostrear graficos si la informacion esta disponible
+// TODO mostrar graficos si la informacion esta disponible
 //              child: showGraph
 //                  ? CustomTabs(data: data, chartType: true)
 //                  : k_notData

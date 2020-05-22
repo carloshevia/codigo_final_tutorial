@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../custom_widgets.dart';
+import '../constants.dart';
+import '../widgets/custom_button.dart';
 import 'stats_screen.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
 
@@ -21,8 +22,10 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: GradientAppBar(
         title: Text('Login Screen'),
+        centerTitle: true,
+        gradient: k_gradientAppBar,
       ),
       body: Container(
         //TODO decoracion del contenedor

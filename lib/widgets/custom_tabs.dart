@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'custom_charts.dart';
-import 'user_consume.dart';
-import 'constants.dart';
+import '../user_consume.dart';
+import '../constants.dart';
 
 class CustomTabs extends StatelessWidget {
   CustomTabs({@required this.data, @required this.chartType});

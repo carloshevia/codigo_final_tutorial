@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class RegistrationScreen extends StatefulWidget {
   //TODO static string id
-  //  static const String id = 'registration_screen';
+  static const String id = 'registration_screen';
 
   @override
   _RegistrationScreenState createState() => _RegistrationScreenState();
@@ -19,7 +19,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Login Screen'),
+        title: Text('Register Screen'),
       ),
       body: Container(
         //TODO decoracion del contenedor
@@ -39,7 +39,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 //              decoration:
 //                  kInputDecoration.copyWith(hintText: 'Enter your email'),
             ),
-            //TODO sized box heigh 24
+            //TODO sized box height 24
             TextField(
               obscureText: true,
               textAlign: TextAlign.center,
@@ -49,22 +49,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 //              decoration:
 //                  kInputDecoration.copyWith(hintText: 'Enter your password'),
             ),
-            //TODO sized box heigh 24
+            //TODO sized box height 24
             MaterialButton(
               child: Text('Register'),
               minWidth: 200.0,
               height: 40.0,
-              onPressed: () async {
-//                 try {
-//                    final newUser = await _auth.createUserWithEmailAndPassword(
-//                        email: email.trim(), password: password.trim());
-//                    if (newUser != null) {
-                Navigator.pushNamed(context, 'welcome_screen');
-//                    }
-//                  } catch (e) {
-//                    print(e);
-//                  }
-              },
               color: Colors.red,
             ),
           ],
