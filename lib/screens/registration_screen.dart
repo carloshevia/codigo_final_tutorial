@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import '../constants.dart';
+import '../widgets/custom_button.dart';
+import 'package:gradient_app_bar/gradient_app_bar.dart';
+import 'welcome_screen.dart';
 
 class RegistrationScreen extends StatefulWidget {
-  //TODO static string id
   static const String id = 'registration_screen';
 
   @override
@@ -10,20 +13,20 @@ class RegistrationScreen extends StatefulWidget {
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
-  //TODO connect to firebase
-//  final _auth = FirebaseAuth.instance;
+  final _auth = FirebaseAuth.instance;
   String email;
   String password;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: GradientAppBar(
+        centerTitle: true,
         title: Text('Register Screen'),
+        gradient: k_gradientAppBar,
       ),
       body: Container(
-        //TODO decoracion del contenedor
-//        decoration: k_boxDecorationGradient
+        decoration: k_boxDecorationGradient,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -36,8 +39,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               onChanged: (value) {
                 email = value;
               },
-//              decoration:
-//                  kInputDecoration.copyWith(hintText: 'Enter your email'),
+              decoration:
+                  kInputDecoration.copyWith(hintText: 'Enter your email'),
             ),
             //TODO sized box height 24
             TextField(
@@ -46,16 +49,25 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               onChanged: (value) {
                 password = value;
               },
-//              decoration:
-//                  kInputDecoration.copyWith(hintText: 'Enter your password'),
+              decoration:
+                  kInputDecoration.copyWith(hintText: 'Enter your password'),
             ),
             //TODO sized box height 24
-            MaterialButton(
-              child: Text('Register'),
-              minWidth: 200.0,
-              height: 40.0,
-              color: Colors.red,
-            ),
+            CustomBotton(
+              bottonText: 'Register',
+              colour: Colors.blueAccent,
+              onPress: () async {
+                try {
+                  final newUser = await _auth.createUserWithEmailAndPassword(
+                      email: email.trim(), password: password.trim());
+                  if (newUser != null) {
+                    Navigator.pushNamed(context, WelcomeScreen.id);
+                  }
+                } catch (e) {
+                  print(e);
+                }
+              },
+            )
           ],
         ),
       ),

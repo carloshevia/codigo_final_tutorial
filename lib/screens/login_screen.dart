@@ -6,8 +6,7 @@ import 'stats_screen.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
 
 class LoginScreen extends StatefulWidget {
-  //TODO static string id
-//  static const String id = 'login_screen';
+  static const String id = 'login_screen';
 
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -15,7 +14,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   //TODO connect to firebase
-//  final _auth = FirebaseAuth.instance;
+  final _auth = FirebaseAuth.instance;
   String email;
   String password;
 
@@ -28,8 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
         gradient: k_gradientAppBar,
       ),
       body: Container(
-        //TODO decoracion del contenedor
-//        decoration: k_boxDecorationGradient
+        decoration: k_boxDecorationGradient,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -42,8 +40,8 @@ class _LoginScreenState extends State<LoginScreen> {
               onChanged: (value) {
                 email = value;
               },
-//              decoration:
-//                  kInputDecoration.copyWith(hintText: 'Enter your email'),
+              decoration:
+                  kInputDecoration.copyWith(hintText: 'Enter your email'),
             ),
             //TODO sized box heigh 24
             TextField(
@@ -51,27 +49,26 @@ class _LoginScreenState extends State<LoginScreen> {
               textAlign: TextAlign.center,
               onChanged: (value) {
                 password = value;
+                print(password);
               },
-//              decoration:
-//                  kInputDecoration.copyWith(hintText: 'Enter your password'),
+              decoration:
+                  kInputDecoration.copyWith(hintText: 'Enter your password'),
             ),
             //TODO sized box heigh 24
-            MaterialButton(
-              child: Text('Log In'),
-              minWidth: 200.0,
-              height: 40.0,
-              onPressed: () async {
-//                  try {
-//                    final user = await _auth.signInWithEmailAndPassword(
-//                        email: email.trim(), password: password.trim());
-//                    if (user != null) {
-                Navigator.pushNamed(context, StatsScreen.id);
-//                    }
-//                  } catch (e) {
-//                    print(e);
-//                  }
+            CustomBotton(
+              bottonText: 'Log in',
+              colour: Colors.lightBlue,
+              onPress: () async {
+                try {
+                  final user = await _auth.signInWithEmailAndPassword(
+                      email: email.trim(), password: password.trim());
+                  if (user != null) {
+                    Navigator.pushNamed(context, StatsScreen.id);
+                  }
+                } catch (e) {
+                  print(e);
+                }
               },
-              color: Colors.red,
             ),
           ],
         ),

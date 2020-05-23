@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-const k_credentials = '';
+const k_credentials = 'google api credentials';
 
-const k_spreadsheetId = '';
+const k_spreadsheetId =
+    'id spreadsheet (se encuentra en la URL del google sheet)';
 
 const k_color_water = Color(0xFF254F68);
 

@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
 import '../user_consume.dart';
 import '../widgets/custom_button.dart';
+import '../widgets/custom_tabs.dart';
 
 class StatsScreen extends StatefulWidget {
   static const String id = 'stats_screen';
@@ -22,15 +23,14 @@ class _StatsScreenState extends State<StatsScreen> {
 
   @override
   void initState() {
-    //TODO crear un objecto networking  para extraer data
-//    networking = Networking();
+    networking = Networking();
+    //print(networking.getData());
     super.initState();
   }
 
-  //TODO obtener map con datos
-//  List<UserConsume> getDataByName() {
-//    return networking.getData()[client];
-//  }
+  List<UserConsume> getDataByName() {
+    return networking.getData()[client];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,11 +47,10 @@ class _StatsScreenState extends State<StatsScreen> {
           actions: <Widget>[
             IconButton(
               icon: Icon(Icons.close),
-//TODO sign out
-//              onPressed: () async {
-//                await _auth.signOut();
-//                Navigator.pop(context);
-//              },
+              onPressed: () async {
+                await _auth.signOut();
+                Navigator.pop(context);
+              },
             )
           ],
           gradient: k_gradientAppBar,
@@ -70,17 +69,17 @@ class _StatsScreenState extends State<StatsScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   // TODO query data y mostrar diferencia entre meses
-//                showGraph
-//                    ? Padding(
-//                        padding: EdgeInsets.all(30),
-//                        child: Text(
-//                          data.last.consume >= 0
-//                              ? 'Consumió +${data.last.consume.abs()} litros que el mes pasado'
-//                              : 'Consumió -${data.last.consume.abs()} litros que el mes pasado',
-//                          style: k_textFieldsStyle,
-//                        ),
-//                      )
-//                    : k_notData,
+                  showGraph
+                      ? Padding(
+                          padding: EdgeInsets.all(30),
+                          child: Text(
+                            data.last.consume >= 0
+                                ? 'Consumió +${data.last.consume.abs()} litros que el mes pasado'
+                                : 'Consumió -${data.last.consume.abs()} litros que el mes pasado',
+                            style: k_textFieldsStyle,
+                          ),
+                        )
+                      : k_notData,
                   Padding(
                     padding: EdgeInsets.all(5),
                     child: TextField(
@@ -100,15 +99,15 @@ class _StatsScreenState extends State<StatsScreen> {
                       colour: Colors.lightBlueAccent,
                       onPress: () async {
                         print('Go Pressed');
-//TODO Obterner data de networking usando la funcion getDataByName()
-//                      setState(() {
-//                        data = getDataByName();
-//                        if (data != null) {
-//                          showGraph = true;
-//                        } else {
-//                          showGraph = false;
-//                        }
-//                      });
+                        setState(() {
+                          data = getDataByName();
+
+                          if (data != null) {
+                            showGraph = true;
+                          } else {
+                            showGraph = false;
+                          }
+                        });
                       },
                     ),
                   ),
@@ -116,19 +115,13 @@ class _StatsScreenState extends State<StatsScreen> {
               ),
             ),
             Tab(
-              child: Text('Hello World'),
-// TODO mostrar graficos si la informacion esta disponible
-//              child: showGraph
-//                  ? CustomTabs(data: data, chartType: false)
-//                  : k_notData
-            ),
+                child: showGraph
+                    ? CustomTabs(data: data, chartType: false)
+                    : k_notData),
             Tab(
-              child: Text('Hello World'),
-// TODO mostrar graficos si la informacion esta disponible
-//              child: showGraph
-//                  ? CustomTabs(data: data, chartType: true)
-//                  : k_notData
-            ),
+                child: showGraph
+                    ? CustomTabs(data: data, chartType: true)
+                    : k_notData),
           ],
         ),
       ),
